@@ -10,10 +10,10 @@ while True:
     start = time.time()
     snake.direction()
     snake.move()
+    board = arena(snake.head_before, snake.body_before)
     if collision(snake.head_before, snake.body_before) is True:
         print(printing(board))
         break
-    board = arena(snake.head_before, snake.body_before)
     print(printing(board))
     time.sleep(1/15)
     clear()
