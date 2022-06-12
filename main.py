@@ -9,7 +9,7 @@ snake = Snake()
 while True:
     snake.direction()
     snake.move()
-    if collision(snake.head_before) is True:
+    if collision(snake.head_before, snake.body_before) is True:
         break
     board = arena(snake.head_before, snake.body_before)
     print(printing(board))
