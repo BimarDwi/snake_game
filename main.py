@@ -4,7 +4,6 @@ from clear import clear
 from collision import collision
 import time
 
-
 snake = Snake()
 
 while True:
