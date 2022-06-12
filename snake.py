@@ -22,18 +22,22 @@ class Snake:
             self.body_before.append(new_body)
 
     def direction(self):
-        keypress = keyboard.read_key()
-        print(keypress)
-        if keypress == "w" and self.speed[0] == 0:
+        w = keyboard.is_pressed("w")
+        a = keyboard.is_pressed("a")
+        s = keyboard.is_pressed("s")
+        d = keyboard.is_pressed("d")
+        if w is True and self.speed[0] == 0:
             self.speed = [-1, 0]
-        elif keypress == "s" and self.speed[0] == 0:
+        elif s is True and self.speed[0] == 0:
             self.speed = [1, 0]
-        elif keypress == "d" and self.speed[1] == 0:
+        elif d is True and self.speed[1] == 0:
             self.speed = [0, 1]
-        elif keypress == "a" and self.speed[1] == 0:
+        elif a is True and self.speed[1] == 0:
             self.speed = [0, -1]
+        else:
+            pass
 
-    def snake_move(self):
+    def move(self):
         self.head_after = [self.head_before[0] + self.speed[0], self.head_before[1] + self.speed[1]]
         self.body_after.append(self.head_before)
         self.head_before = self.head_after
@@ -43,3 +47,4 @@ class Snake:
 
         self.body_after.pop()
         self.body_before = self.body_after
+        self.body_after = []
