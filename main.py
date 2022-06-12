@@ -7,6 +7,7 @@ import time
 snake = Snake()
 
 while True:
+    start = time.time()
     snake.direction()
     snake.move()
     if collision(snake.head_before, snake.body_before) is True:
