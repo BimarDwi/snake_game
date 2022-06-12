@@ -3,6 +3,8 @@ import keyboard
 
 class Snake:
     body_before = [
+        [2, 14], [2, 13], [2, 12], [2, 11], [2, 10],
+        [2, 9], [2, 8], [2, 7], [2, 6], [2, 5],
         [2, 4], [2, 3], [2, 2]
     ]
 
@@ -10,7 +12,7 @@ class Snake:
 
     ]
 
-    head_before = [2, 5]  # [vertical, horizontal]
+    head_before = [2, 15]  # [vertical, horizontal]
 
     head_after = []
 
