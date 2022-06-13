@@ -16,7 +16,6 @@ class Snake:
 
     speed = [0, 1]  # [v_speed, h_speed]
 
-
     def direction(self):
         w = keyboard.is_pressed("w")
         a = keyboard.is_pressed("a")
@@ -44,6 +43,54 @@ class Snake:
         self.body_after.pop()
         self.body_before = self.body_after
         self.body_after = []
+
+        if self.head_before[0] == 0:
+            self.head_after = [25, self.head_before[1]]
+            self.body_after.append(self.head_before)
+            self.head_before = self.head_after
+
+            for body in self.body_before:
+                self.body_after.append(body)
+
+            self.body_after.pop()
+            self.body_before = self.body_after
+            self.body_after = []
+
+        elif self.head_before[0] == 26:
+            self.head_after = [1, self.head_before[1]]
+            self.body_after.append(self.head_before)
+            self.head_before = self.head_after
+
+            for body in self.body_before:
+                self.body_after.append(body)
+
+            self.body_after.pop()
+            self.body_before = self.body_after
+            self.body_after = []
+
+        elif self.head_before[1] == 0:
+            self.head_after = [self.head_before[0], 25]
+            self.body_after.append(self.head_before)
+            self.head_before = self.head_after
+
+            for body in self.body_before:
+                self.body_after.append(body)
+
+            self.body_after.pop()
+            self.body_before = self.body_after
+            self.body_after = []
+
+        elif self.head_before[1] == 26:
+            self.head_after = [self.head_before[0], 1]
+            self.body_after.append(self.head_before)
+            self.head_before = self.head_after
+
+            for body in self.body_before:
+                self.body_after.append(body)
+
+            self.body_after.pop()
+            self.body_before = self.body_after
+            self.body_after = []
 
     def add_length(self):
         vector_vertical = self.body_before[-1][0] - self.body_before[-2][0]
