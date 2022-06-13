@@ -1,22 +1,32 @@
 from snake import Snake
 from arena import *
 from clear import clear
+from food import Food
 from collision import collision
-import time
+from random import randint
+from time import time, sleep
 
 snake = Snake()
+apple = Food([randint(1, 25), randint(1, 25)])
+board = arena(snake.head_before, snake.body_before, apple.position)
+score = 0
 
 while True:
-    start = time.time()
+    start = time()
     snake.direction()
     snake.move()
-    board = arena(snake.head_before, snake.body_before)
-    if collision(snake.head_before, snake.body_before) is True:
+
+    if snake.head_before == apple.position:
+        snake.add_length()
+        apple.new_position()
+        score += 1
+
+    if collision(snake.head_before, snake.body_before):
         print(printing(board))
         break
-    print(printing(board))
-    time.sleep(1/15)
-    clear()
-    print(f"fps = {1/(time.time()-start)}")
 
-print("mati nabrak dinding aot")
+    board = arena(snake.head_before, snake.body_before, apple.position)
+    print(printing(board))
+    sleep(1/15)
+    clear()
+    print(f"fps = {1/(time()-start)}\nscore = {score}")
