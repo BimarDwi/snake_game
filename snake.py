@@ -3,9 +3,7 @@ import keyboard
 
 class Snake:
     body_before = [
-        [2, 14], [2, 13], [2, 12], [2, 11], [2, 10],
-        [2, 9], [2, 8], [2, 7], [2, 6], [2, 5],
-        [2, 4], [2, 3], [2, 2]
+        [2, 14], [2, 15]
     ]
 
     body_after = [
@@ -50,3 +48,9 @@ class Snake:
         self.body_after.pop()
         self.body_before = self.body_after
         self.body_after = []
+
+    def add_length(self):
+        vector_vertical = self.body_before[-1][0] - self.body_before[-2][0]
+        vector_horizontal = self.body_before[-1][1] - self.body_before[-2][1]
+        vector = [vector_vertical, vector_horizontal]
+        self.body_before.append([self.body_before[-1][0] + vector[0], self.body_before[-1][1] + vector[1]])
