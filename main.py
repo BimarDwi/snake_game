@@ -22,7 +22,12 @@ while True:
         score += 1
 
     if collision(snake.head_before, snake.body_before):
-        print(printing(board))
+        for i in range(4, 1, -1):
+            print(f"score = {score}")
+            print(printing(board))
+            print(f"Exit in ...{i-1}")
+            sleep(1)
+            clear()
         break
 
     board = arena(snake.head_before, snake.body_before, apple.position)
