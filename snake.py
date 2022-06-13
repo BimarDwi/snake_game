@@ -16,10 +16,6 @@ class Snake:
 
     speed = [0, 1]  # [v_speed, h_speed]
 
-    def __init__(self, new_body=None):
-
-        if new_body is not None:
-            self.body_before.append(new_body)
 
     def direction(self):
         w = keyboard.is_pressed("w")
